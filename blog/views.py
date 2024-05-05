@@ -9,14 +9,19 @@ posts = [
 ]
 
 def home(request):
+    myhome = {
+        'title':'الصفحة الرئيسية'
+    }
     
-    return render(request, 'blog/home.html')
+    return render(request, 'blog/home.html',myhome)
 
 def index(request):
     context = {
-        'title':'الصفحة الرئيسية',
+        'title':' المدونة',
         'posts': posts
     }
     return render(request, 'blog/index.html',context)
 
+def about(request):
+    return render(request, 'blog/about.html')
 
