@@ -1,0 +1,13 @@
+{% extends 'blog/home.html' %}
+
+{% block content %}
+
+<div class="border p-4 mb-4" >
+    <h2 class="text-dark"> {{post.name}}</h2>
+    <span>تاريخ التدوينة : {{post.date_post | date:'d-m-Y'}}</span>
+    <hr>
+    <p class="text-dark">شرح التدوينة  : {{post.description}}</p>
+    <hr>
+</div>
+
+{% endblock %}

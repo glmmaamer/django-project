@@ -1,27 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Post
 
 # Create your views here.
-posts = [
-    {'title': 'التدوينة الاولة'},
-    {'description':'تم نشر هذه التدوينة من طرف غالم معمر'},
-    {'date':'2024/05/02'},
-    {'auther':'ghalem maamer'},
-]
 
 def home(request):
     myhome = {
-        'title':'الصفحة الرئيسية'
+        'title':'الصفحة الرئيسية',
+        'postes':Post.objects.all()
     }
     
     return render(request, 'blog/home.html',myhome)
 
-def index(request):
-    context = {
-        'title':' المدونة',
-        'posts': posts
-    }
-    return render(request, 'blog/index.html',context)
-
 def about(request):
     return render(request, 'blog/about.html')
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    context = {
+        'title':post,
+        'post': post
+    }
+    return render(request, 'blog/detail.html', context)
 
