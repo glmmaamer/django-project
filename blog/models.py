@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
-    date_post = models.DateTimeField(default=timezone)
+    date_post = models.DateTimeField(default=timezone.now)
     date_now = models.DateField(auto_now=True)
     user_post = models.ForeignKey(User, on_delete=models.CASCADE)
 
