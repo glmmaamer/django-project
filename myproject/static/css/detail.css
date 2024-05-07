@@ -1,0 +1,9 @@
+.postes{
+    background-color: white;
+    border:solid 2px black;
+    border-radius: 10px;
+}
+.comment{
+    background-color: white;
+    border:solid 2px grey;
+}

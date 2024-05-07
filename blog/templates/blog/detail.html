@@ -1,13 +1,39 @@
 {% extends 'blog/home.html' %}
+{% load static %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 
-<div class="border p-4 mb-4" >
-    <h2 class="text-dark"> {{post.name}}</h2>
-    <span>تاريخ التدوينة : {{post.date_post | date:'d-m-Y'}}</span>
+
+<div class=" comment  p-4 mb-4 bg-dark " >
+    <h2 class="text-light text-center"> {{post.name}}</h2>
+    <span class="text-light">تاريخ التدوينة : {{post.date_post | date:'d-m-Y'}}</span>
     <hr>
-    <p class="text-dark">شرح التدوينة  : {{post.description}}</p>
+    <p class="text-light">شرح التدوينة  : {{post.description}}</p>
     <hr>
 </div>
+    {% if comments %}
+    <h4 class="border-bottom mt-2 mb-2 ">التعليقات({{comments.count}})</h4>
+
+    {% for comment in comments %}
+    <div class="comment mb-2 bg-dark">
+        <h4 class="text-light text-center">({{comment.name}}) </h4>
+        <p class="text-light text-center">{{comment.body}}</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="comment mb-4 p-1 ">
+        <h2 class="border-bottom text-black mt-3 text-center"> لايوجد تعليقات</h2>
+    </div>
+    {% endif %}
+    <h3 class="border-bottom mb-4 mt-2">تعليق جديد</h3>
+    <div class="border p-4 mt-5 mb-3 bg-secondary">
+        <form method="POST">
+            {% csrf_token %}
+            {{comment_forms|crispy}}
+            <input class="btn btn-dark mb-4" type="submit" value="نشر التعليق">
+        </form>
+    </div>
+
 
 {% endblock %}
