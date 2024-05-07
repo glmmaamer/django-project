@@ -19,11 +19,21 @@ def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     comments = post.comments.filter(active=True)
     comment_forms = NowComment
+    new_comment = None
     context = {
         'title':post,
         'post': post,
         'comments':comments,
         'comment_forms':comment_forms,
     }
+    if request.method == 'POST':
+        comment_forms = NowComment(data=request.POST)
+        if comment_forms.is_valid():
+            new_comment = comment_forms.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+            comment_forms = NowComment()
+    else:
+        comment_forms = NowComment()
     return render(request, 'blog/detail.html', context)
 
