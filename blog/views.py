@@ -5,12 +5,12 @@ from .forms import NowComment
 # Create your views here.
 
 def home(request):
-    myhome = {
+    context = {
         'title':'الصفحة الرئيسية',
         'postes':Post.objects.all()
     }
     
-    return render(request, 'blog/home.html',myhome)
+    return render(request, 'blog/home.html',context)
 
 def about(request):
     return render(request, 'blog/about.html')

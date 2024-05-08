@@ -1,4 +1,5 @@
 {% load static %}
+{% load post_tag %}
 <!DOCTYPE html>
 <html>
 <head lang="ar">
@@ -82,7 +83,7 @@
       <div class="col-md-4">
         <div class="card mb-3">
           <h3 class="text-center bg-dark text-white">أخر تدوينات</h3>
-          {% include 'blog/show_post.html' %}
+          {% show_5_postes %}
         </div>
         <div class="card mb-3">
           <h3 class="text-center bg-dark text-white">أخر تعليقات</h3>
