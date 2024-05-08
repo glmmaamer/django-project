@@ -3,5 +3,8 @@
     <a class="text-dark" href="{% url 'detail' post.id %}">
         <li class="list-gourb-item">{{post.name}}</li>
     </a>
+    {% empty %}
+    <li>{{post.name}}</li>
     {% endfor %}
+   
 </ul>

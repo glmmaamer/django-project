@@ -1,0 +1,8 @@
+<ul  class="list-groub-flush">
+    {% for commant in comments %}
+        <li class="list-gourb-item">{{commant.name}}</li>
+        {% empty %}
+        <li class="list-groub-item">لايوجد تعليقات</li>
+    
+    {% endfor %}
+</ul>
