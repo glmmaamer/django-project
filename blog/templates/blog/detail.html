@@ -28,7 +28,7 @@
     {% endif %}
     <h3 class="border-bottom mb-4 mt-2">تعليق جديد</h3>
     <div class="border p-4 mt-5 mb-3">
-        <form method="POST">
+        <form  method="POST">
             {% csrf_token %}
             {{comment_forms|crispy}}
             <input class="btn btn-dark mb-4" type="submit" value="نشر التعليق">

@@ -80,14 +80,14 @@
       </div>
  
       
-      <div class="col-md-4">
-        <div class="card mb-3">
+      <div class="col-md-4 ">
+        <div class="card mb-5 mt-5">
           <h3 class="text-center bg-dark text-white">أخر تدوينات</h3>
           {% show_5_postes %}
         </div>
-        <div class="card mb-3">
+        <div class="card mb-5 mt-5">
           <h3 class="text-center bg-dark text-white">أخر تعليقات</h3>
-          {% include 'blog/show_comment.html' %}
+          {% show_5_comments %}
         </div>
       </div>
     </div>

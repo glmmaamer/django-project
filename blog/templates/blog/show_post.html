@@ -1,5 +1,5 @@
 <ul  class="list-groub-flush">
-    {% for post in l_postes %}
+    {% for post in show_postes %}
     <a class="text-dark" href="{% url 'detail' post.id %}">
         <li class="list-gourb-item">{{post.name}}</li>
     </a>
