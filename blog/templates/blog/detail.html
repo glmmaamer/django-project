@@ -13,14 +13,16 @@
     <hr>
 </div>
     {% if comments %}
+    
     <h4 class="border-bottom mt-2 mb-2 ">التعليقات({{comments.count}})</h4>
 
-    {% for comment in comments %}
     <div class="comment mb-2 ">
+    {% for comment in comments %}
         <h4 class="text-black text-center">({{comment.name}}) </h4>
         <p class="text-black text-center">{{comment.body}}</p>
-    </div>
+
     {% endfor %}
+    </div>
     {% else %}
     <div class="comment mb-4 p-1 ">
         <h2 class="border-bottom text-black mt-3 text-center"> لايوجد تعليقات</h2>
