@@ -5,8 +5,8 @@
 {% load crispy_forms_tags %}
 
 
-<div class=" comment  p-4 mb-4 " >
-    <h2 class="text-black text-center"> {{post.name}}</h2>
+<div class=" comment  p-4 bg-secondary mb-1" >
+    <h2 class="text-black text-center "> {{post.name}}</h2>
     <span class="text-blackt">تاريخ التدوينة : {{post.date_post | date:'d-m-Y'}}</span>
     <hr>
     <p class="text-black">شرح التدوينة  : {{post.description}}</p>
@@ -14,12 +14,14 @@
 </div>
     {% if comments %}
     
-    <h4 class="border-bottom mt-2 mb-2 ">التعليقات({{comments.count}})</h4>
 
-    <div class="comment mb-2 ">
+    <div class="comment mb-2 bg-secondary ">
+        <h4 class="border-bottom  mb-2 mt-2 ">التعليقات({{comments.count}})</h4>
     {% for comment in comments %}
+        <hr>
         <h4 class="text-black text-center">({{comment.name}}) </h4>
         <p class="text-black text-center">{{comment.body}}</p>
+        <hr>
 
     {% endfor %}
     </div>

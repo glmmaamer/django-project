@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 #create accounte 
 class create_account(forms.ModelForm):
     username   = forms.CharField(label='إسم المستخدم',max_length=30)
-    email      = forms.CharField(label='إيمايل')
+    email      = forms.CharField(label='البريد الالكتروني')
     first_name = forms.CharField(label='اللقب')
     last_name  = forms.CharField(label='الاسم')
     password1  = forms.CharField(label='كلمة السر',widget=forms.PasswordInput(),min_length=8)
