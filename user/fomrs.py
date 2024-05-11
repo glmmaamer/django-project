@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 
 #create accounte 
 class create_account(forms.ModelForm):
-    username   = forms.CharField(label='إسم المستخدم',max_length=30)
+    username   = forms.CharField(label='إسم المستخدم',max_length=30,help_text='إسم المستخدم يجب ان لايحتوي على مسافات')
     email      = forms.CharField(label='البريد الالكتروني')
     first_name = forms.CharField(label='اللقب')
     last_name  = forms.CharField(label='الاسم')
-    password1  = forms.CharField(label='كلمة السر',widget=forms.PasswordInput(),min_length=8)
-    password2  = forms.CharField(label='تأكد كلمة السر',widget=forms.PasswordInput(),min_length=8)
+    password1  = forms.CharField(label='كلمة السر',widget=forms.PasswordInput(),min_length=8,help_text='كلمة السر لايجب ان تكون اقل من 8 أحرف أو ارقام أو رموز')
+    password2  = forms.CharField(label='تأكد كلمة السر',widget=forms.PasswordInput(),min_length=8,help_text='كلمة السر التأكيد يجب ان تكون متطابقة مع كلمة السر الاولى')
 
 
     class Meta:
