@@ -1,0 +1,14 @@
+{% extends 'blog/home.html' %}
+{% load static %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="border p-4 mt-5 mb-3 bg-white text-black">
+    <h3 class="border-bottom mb-4 mt-2"> تسجيل الدخول </h3>
+    <a href="{% url 'login' %}">تسجيل الدخول</a>
+    <hr>
+    <h3 class="border-bottom mb-4 mt-2">  إنشاء حساب </h3>
+    <a href="{% url 'register' %}">إنشاء حساب جديد</a>
+</div>
+
+{% endblock %}
