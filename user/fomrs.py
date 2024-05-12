@@ -32,8 +32,8 @@ class create_account(forms.ModelForm):
     
 
 class LoginForm(forms.ModelForm):
-    username  = forms.CharField(label='إسم المستخدم')
-    password  = forms.CharField(label='كلمة السر')
+    username  = forms.CharField(label='إضافة إسم المستخدم')
+    password  = forms.CharField(label='إضافة كلمة المرور')
     class Meta:
         model = User
         fields = ('username','password')

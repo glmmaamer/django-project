@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .fomrs import create_account, LoginForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
@@ -23,8 +24,24 @@ def register(request):
     })
 
 def login_user(reqeust):
-    form = LoginForm()
+    if reqeust.method == 'POST':
+        form = LoginForm()
+        username  = reqeust.POST['username']
+        password = reqeust.POST['password']
+        user = authenticate(reqeust, username=username , password=password)
+        if user is not None:
+            login(reqeust, user)
+            return redirect('home')
+        else:
+            messages.warning(reqeust, 'يوجد خطأفي إسم المستخدم أو كلمة المرور')
+    else:
+        form = LoginForm()
     return render(reqeust, 'user/login.html', context={
                       'title':'تسجيل الدخول',
-                      'from':form
+                      'form':form
                   })
+def logout_user(request):
+    logout(request)
+    return render(request, 'user/logout.html',context={
+        'title':'تسجيل الخروج'
+    })
