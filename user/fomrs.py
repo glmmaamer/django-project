@@ -29,4 +29,11 @@ class create_account(forms.ModelForm):
         if User.objects.filter(username=c_user['username']):
             raise forms.ValidationError('اسم المستخدم موجود')
         return c_user['username']
+    
 
+class LoginForm(forms.ModelForm):
+    username  = forms.CharField(label='إسم المستخدم')
+    password  = forms.CharField(label='كلمة السر')
+    class Meta:
+        model = User
+        fields = ('username','password')

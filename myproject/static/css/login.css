@@ -1,0 +1,14 @@
+.login{
+    border:solid 2px grey;
+    border-bottom: solid 3px black;
+}
+#username{
+    border:solid 2px grey;
+    border-bottom: solid 3px black;
+    border-radius: 10px;
+}
+#password{
+    border:solid 2px grey;
+    border-bottom: solid 3px black;
+    border-radius: 10px;
+}

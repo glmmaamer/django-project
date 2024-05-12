@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .fomrs import create_account
+from .fomrs import create_account, LoginForm
 from django.contrib import messages
 
 
@@ -22,3 +22,9 @@ def register(request):
         'form':form,
     })
 
+def login_user(reqeust):
+    form = LoginForm()
+    return render(reqeust, 'user/login.html', context={
+                      'title':'تسجيل الدخول',
+                      'from':form
+                  })
