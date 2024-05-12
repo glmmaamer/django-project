@@ -46,18 +46,26 @@
               </ul>
             </div>
           </ul>
+          {% if user.is_authenticated %}
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="{% url 'login' %}">تسجيل دخول</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="{% url 'register' %}">أنشاء حساب</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="{% url 'logout' %}"> تسجيل الخروج</a>
-              </li>
-
-          </ul>
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="#">ملف شخصي  </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="{% url 'logout' %}"> تسجيل الخروج</a>
+            </li>
+        </ul>
+          {% else %}
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="{% url 'login' %}">تسجيل دخول</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="{% url 'register' %}">إنشاء  حساب</a>
+            </li>
+        </ul>
+          {% endif %}
+    
         </div>
       </div>
     </nav>
