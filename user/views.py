@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .fomrs import create_account, LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from blog.models import Post
 
 
 # Create your views here.
@@ -36,12 +37,21 @@ def login_user(reqeust):
             messages.warning(reqeust, 'يوجد خطأفي إسم المستخدم أو كلمة المرور')
     else:
         form = LoginForm()
-    return render(reqeust, 'user/login.html', context={
+    return render(reqeust, 'user/login.html', {
                       'title':'تسجيل الدخول',
                       'form':form
                   })
 def logout_user(request):
     logout(request)
-    return render(request, 'user/logout.html',context={
+    return render(request, 'user/logout.html',{
         'title':'تسجيل الخروج'
+    })
+
+
+
+def profile(reqeust):
+    post = Post.objects.filter(user_post=reqeust.user)
+    return render(reqeust, 'user/profile.html',{
+        'title':'الملف اشخصي',
+        'posts':post,
     })

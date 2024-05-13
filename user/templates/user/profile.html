@@ -1,0 +1,52 @@
+{% extends 'blog/home.html' %}
+{% load static %}
+{% block content %}
+<div class="login p-4 mb-5">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{% static 'img/user.png' %}" alt="صورة الناشر">
+            <div class="mt-4">
+                <a href="" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+                  </svg>تعديل</a>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <h2 >{{user.username}} </h2>
+            <p class="font-weight-bold mt-3">الاسم:   <span class="font-weight-normal"> {{user.first_name}} {{user.last_name}} </span></p>
+            <p class="font-weight-bold">البريد الاكتروني:   <span class="font-weight-normal"> {{user.email}} </span></p>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="login col-md ">
+        <h3 class="border-bottom pb-3 mb-4">عدد التدوينات</h3>
+        <h4 class="bg-secondary text-center p-2 text-dark">{{posts.count}}</h4>
+        <h3 class="border-bottom mb-4 pb-3 mt-5"> تدويناتي</h3>
+        <ul class="pr-2">
+            <a class="text-dark" href="#">عنوان التدوينة</a>
+        </ul>
+        <ul class="pr-2">
+            <a class="text-dark" href="#">عنوان التدوينة</a>
+        </ul>
+        <ul class="pr-2">
+            <a class="text-dark" href="#">عنوان التدوينة</a>
+        </ul>
+        <ul class="pr-2">
+            <a class="text-dark" href="#">عنوان التدوينة</a>
+        </ul>
+        <ul class="pr-2">
+            <a class="text-dark" href="#">عنوان التدوينة</a>
+        </ul>
+    </div>
+    <div class="border-top pt-3 text-center mt-4">
+        <a class="btn btn-primary text-light" href="#">السابق</a>
+        <span class="pr-4 pl-4">الصفحة1 من 10</span>
+        <a class="btn btn-primary text-light" href="#">التالي</a>
+
+
+    </div>
+</div>
+{% endblock %}

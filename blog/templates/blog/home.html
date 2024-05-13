@@ -49,7 +49,7 @@
           {% if user.is_authenticated %}
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active text-light" aria-current="page" href="#">ملف شخصي  </a>
+              <a class="nav-link active text-light" aria-current="page" href="{% url 'profile' %}">ملف شخصي  </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active text-light" aria-current="page" href="{% url 'logout' %}"> تسجيل الخروج</a>
@@ -102,11 +102,11 @@
       
       <div class="col-md-4 ">
         <div class="card mb-5 mt-5">
-          <h3 class="text-center bg-dark text-white">أخر تدوينات</h3>
+          <h3 class="text-center bg-primary text-white">أخر تدوينات</h3>
           {% show_5_postes %}
         </div>
         <div class="card mb-5 mt-5">
-          <h3 class="text-center bg-dark text-white">أخر تعليقات</h3>
+          <h3 class="text-center bg-primary text-white">أخر تعليقات</h3>
           {% show_5_comments %}
         </div>
       </div>
