@@ -25,28 +25,21 @@
         <h3 class="border-bottom pb-3 mb-4">عدد التدوينات</h3>
         <h4 class="bg-secondary text-center p-2 text-dark">{{posts.count}}</h4>
         <h3 class="border-bottom mb-4 pb-3 mt-5"> تدويناتي</h3>
+        {% for post in posts %}
         <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
+            <a class="text-dark" href="{% url 'detail' post.id %}">{{post.name}} </a>
         </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
+        {% empty %}
+        <h3 class="text-center mb-5">لايوجد تدوينات</h3>
+        {% endfor %}
     </div>
+    {% if posts.count >= 6 %}
+
     <div class="border-top pt-3 text-center mt-4">
         <a class="btn btn-primary text-light" href="#">السابق</a>
         <span class="pr-4 pl-4">الصفحة1 من 10</span>
         <a class="btn btn-primary text-light" href="#">التالي</a>
-
-
     </div>
+    {% endif %}
 </div>
 {% endblock %}
