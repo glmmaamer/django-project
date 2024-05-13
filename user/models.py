@@ -14,6 +14,6 @@ class Profiles(models.Model):
 
 def create_img(sender, **kwarg):
     if kwarg['created']:
-        user_profile = Profiles.objects.create(user=kwarg['instance'])
+        Profiles.objects.create(user=kwarg['instance'])
 
 post_save.connect(create_img,sender=User)
