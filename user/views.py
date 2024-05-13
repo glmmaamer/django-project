@@ -12,9 +12,11 @@ def register(request):
     if request.method == 'POST':
         form = create_account(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            messages.success(request, f'{username}تم تسجيل الدخول بنجاح')
+            now_user = form.save(commit=False)
+            #username = form.cleaned_data['username']
+            now_user.set_password(form.cleaned_data['password1'])
+            now_user.save()
+            messages.success(request, f'{now_user}تم تسجيل الدخول بنجاح')
         return redirect('home')
 
     else:
