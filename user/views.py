@@ -15,7 +15,7 @@ def register(request):
         if form.is_valid():
             now_user = form.save(commit=False)
             #username = form.cleaned_data['username']
-            now_user.set_password(form.cleaned_data['password1'])
+            now_user.set_password(form.cleaned_data['password2'])
             now_user.save()
             messages.success(request, f'{now_user}تم تسجيل الدخول بنجاح')
         return redirect('login')

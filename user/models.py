@@ -13,13 +13,13 @@ class Profiles(models.Model):
     def __str__(self):
         return '{}profile'.format(self.user.username)
     
-    def save(self):
-        super().save()
+    def save_img(self, *args, **kwargs):
+        super().save(*args, **kwargs)
         img = Image.open(self.image.path)
         if img.width >300 or img.height >300:
             size_img = (300,300)
             img.thumbnail(size_img)
-            img.save(self.image.path)
+            img.save_img(self.image.path)
         
         
 
