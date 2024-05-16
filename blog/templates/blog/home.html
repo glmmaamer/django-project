@@ -89,9 +89,9 @@
             <hr>
             <p class="text-black">شرح التدوينة  : {{post.description}}</p>
             <hr>
-            
         </div>
         {% endfor %}
+        {% include 'blog/paginations.html' with page=postes %}
         {% block content %}
 
         

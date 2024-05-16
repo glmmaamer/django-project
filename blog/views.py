@@ -15,14 +15,11 @@ def home(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_page)
-
-
-
     context = {
         'title':'الصفحة الرئيسية',
-        'postes': posts
+        'postes': posts,
+        'page':page,
     }
-    
     return render(request, 'blog/home.html',context)
 
 def about(request):
