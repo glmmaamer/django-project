@@ -1,13 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment
 from .forms import NowComment
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 
 def home(request):
+    posts = Post.objects.all()
+    paginator = Paginator(posts, 3)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_page)
+
+
+
     context = {
         'title':'الصفحة الرئيسية',
-        'postes':Post.objects.all()
+        'postes': posts
     }
     
     return render(request, 'blog/home.html',context)
