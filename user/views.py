@@ -55,17 +55,19 @@ def logout_user(request):
 @login_required(login_url='login')
 def profile(reqeust):
     posts = Post.objects.filter(user_post=reqeust.user)
-    paginator = Paginator(posts, 3)
+    post_list = Post.objects.filter(user_post=reqeust.user)
+    paginator = Paginator(post_list,2)
     page = reqeust.GET.get('page')
     try:
-        posts = paginator.page(page)
+        post_list = paginator.page(page)
     except PageNotAnInteger:
-        posts = paginator.page(1)
+        post_list = paginator.page(1)
     except EmptyPage:
-        posts = paginator.page(paginator.num_page)
+        post_list = paginator.page(paginator.num_page)
 
     return render(reqeust, 'user/profile.html',{
         'title':'الملف اشخصي',
         'postes':posts,
         'page':page,
+        'posts_list':post_list,
     })
