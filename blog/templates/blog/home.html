@@ -1,5 +1,6 @@
 {% load static %}
 {% load post_tag %}
+
 <!DOCTYPE html>
 <html>
 <head lang="ar">
@@ -33,7 +34,7 @@
               <a class="nav-link active text-light" aria-current="page" href="{% url 'home' %}">الرئيسية</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="{% url 'about' %}">من انا</a>
+              <a class="nav-link text-light" href="#">من انا</a>
             </li>
             <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,37 +71,15 @@
       </div>
     </nav>
   </header>
+  <section>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-md-8">
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{message.tags}}" >
-            {{message}} 
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% for post in postes %}
-        <div class="comment p-3 mb-3 bg-white ">
-            <img src="{{post.user_post.profile.img.url}}" alt="ناشر">
-            
-            <h2 class="text-black text-center"><a class="text-black" href="{% url 'detail' post.id %}">{{post.name}}</a></h2>
-            <span>تاريخ التدوينة : {{post.date_post | date:'d-m-Y'}}</span>
-            <hr>
-            <p class="text-black">شرح التدوينة  : {{post.description}}</p>
-            <hr>
-        </div>
-        {% endfor %}
-        {% include 'blog/paginations.html' with page=postes %}
+      <div class="col-md-8 mt-3">
         {% block content %}
 
         
         {% endblock %}
-
-
       </div>
- 
-      
       <div class="col-md-4 ">
         <div class="card mb-5 mt-5">
           <h3 class="text-center bg-primary text-white">أخر تدوينات</h3>
@@ -113,7 +92,7 @@
       </div>
     </div>
   </div>
-
+</section>
     
     {% include 'parstail/footer.html' %}
 

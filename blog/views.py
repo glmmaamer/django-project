@@ -20,10 +20,9 @@ def home(request):
         'postes': posts,
         'page':page,
     }
-    return render(request, 'blog/home.html',context)
+    return render(request, 'blog/index.html',context)
 
-def about(request):
-    return render(request, 'blog/about.html')
+
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)

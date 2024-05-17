@@ -32,14 +32,13 @@
         {% empty %}
         <h3 class="text-center mb-5">لايوجد تدوينات</h3>
         {% endfor %}
-    </div>
-    {% if posts.count >= 6 %}
+        {% include 'blog/paginations.html' with page=postes %}
 
-    <div class="border-top pt-3 text-center mt-4">
-        <a class="btn btn-primary text-light" href="#">السابق</a>
-        <span class="pr-4 pl-4">الصفحة1 من 10</span>
-        <a class="btn btn-primary text-light" href="#">التالي</a>
     </div>
-    {% endif %}
 </div>
+
+
+
+
+
 {% endblock %}

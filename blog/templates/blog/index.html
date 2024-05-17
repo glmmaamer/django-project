@@ -1,0 +1,24 @@
+{% extends 'blog/home.html' %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}" >
+    {{message}} 
+</div>
+{% endfor %}
+{% endif %}
+{% for post in postes %}
+<div class="comment p-3 mb-3 bg-white">
+    <img src="{{post.user_post.profile.img.url}}" alt="ناشر">
+    
+    <h2 class="text-black text-center"><a class="text-black" href="{% url 'detail' post.id %}">{{post.name}}</a></h2>
+    <span>تاريخ التدوينة : {{post.date_post | date:'d-m-Y'}}</span>
+    <hr>
+    <p class="text-black">شرح التدوينة  : {{post.description}}</p>
+    <hr>
+</div>
+{% endfor %}
+{% include 'blog/paginations.html' with page=postes %}
+
+
+{% endblock %}
