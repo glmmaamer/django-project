@@ -66,6 +66,6 @@ def profile(reqeust):
 
     return render(reqeust, 'user/profile.html',{
         'title':'الملف اشخصي',
-        'posts':posts,
+        'postes':posts,
         'page':page,
     })

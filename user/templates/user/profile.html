@@ -23,18 +23,17 @@
 <div class="row mb-5">
     <div class="login col-md ">
         <h3 class="border-bottom pb-3 mb-4">عدد التدوينات</h3>
-        <h4 class="bg-secondary text-center p-2 text-dark">{{posts.count}}</h4>
+        <h4 class="bg-secondary text-center p-2 text-dark">{{postes.count}}</h4>
         <h3 class="border-bottom mb-4 pb-3 mt-5"> تدويناتي</h3>
-        {% for post in posts %}
+        {% for post in postes %}
         <ul class="pr-2 text-center">
             <a class="text-dark" href="{% url 'detail' post.id %}">{{post.name}} </a>
         </ul>
         {% empty %}
         <h3 class="text-center mb-5">لايوجد تدوينات</h3>
         {% endfor %}
-        {% include 'blog/paginations.html' with page=postes %}
-
     </div>
+    {% include 'blog/paginations.html' with page=postes %}
 </div>
 
 
