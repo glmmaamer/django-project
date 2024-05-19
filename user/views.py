@@ -73,13 +73,23 @@ def profile(reqeust):
     })
 
 def profile_update(request):
-    update_user = UpdateProfile
-    update_img = Update_img_profile
+    if request.method == 'POST':
+        user_form = UpdateProfile( request.POST ,instance=request.user)
+        img_form = Update_img_profile( request.POST, request.FILES ,instance=request.user)
+        if user_form.is_valid and img_form.is_valid:
+            user_form.save()
+            img_form.save()
+            messages.success(request, 'تم تعديل ملفك الشخصي')
+    else:
+        update_user = UpdateProfile(instance=request.user)
+        update_img = Update_img_profile(instance=request.user)
+        messages.success(request,'هناك خطأ')
+
 
     context = {
         'title':'تعديل ملف شخصي',
-        'user_form':update_user,
-        'img_form':update_img,
+        'user_form':user_form,
+        'img_form':img_form,
     }
 
     return render(request, 'user/update_profile.html',context)
