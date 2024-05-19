@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Profiles
 
 
 #create accounte 
@@ -37,3 +38,16 @@ class LoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username','password')
+
+class UpdateProfile(forms.ModelForm):
+    email      = forms.CharField(label='البريد الالكتروني')
+    first_name = forms.CharField(label='اللقب')
+    last_name  = forms.CharField(label='الاسم')
+    class Meta:
+        model = User
+        fields = ('email','first_name','last_name')
+
+class Update_img_profile(forms.ModelForm):
+    class Meta:
+        model = Profiles
+        fields = ('image',)

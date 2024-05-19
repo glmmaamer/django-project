@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .fomrs import create_account, LoginForm
+from .fomrs import create_account, LoginForm, UpdateProfile, Update_img_profile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from blog.models import Post
@@ -71,3 +71,15 @@ def profile(reqeust):
         'page':page,
         'posts_list':post_list,
     })
+
+def profile_update(request):
+    update_user = UpdateProfile
+    update_img = Update_img_profile
+
+    context = {
+        'title':'تعديل ملف شخصي',
+        'user_form':update_user,
+        'img_form':update_img,
+    }
+
+    return render(request, 'user/update_profile.html',context)
