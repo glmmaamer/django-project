@@ -1,11 +1,11 @@
-from django.forms import BaseModelForm
+from django.forms import BaseModelForm 
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment
-from .forms import NowComment
+from .forms import NowComment, post_ar
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import CreateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 def home(request):
@@ -49,10 +49,10 @@ def post_detail(request, post_id):
   
     return render(request, 'blog/detail.html', context)
 
-class Post_Creat_view(CreateView):
+class Post_Creat_view(LoginRequiredMixin ,CreateView):
     model  = Post
-    fields = ['name', 'description']
     template_name = 'blog/new_post.html'
+    form_class = post_ar
     
     def form_valid(self, form):
         form.instance.user_post = self.request.user
