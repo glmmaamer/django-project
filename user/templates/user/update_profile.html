@@ -9,7 +9,13 @@
     <form  method="POST" class="text-black" enctype="multipart/form-data">
         {% csrf_token %}
         {{user_form | crispy}}
-        {{img_form | crispy}}
+        <!--{{img_form | crispy}}-->
+        <div>
+            <span>صورة ملف الشخصي</span>
+            <br>
+            <label for="image" class="btn btn-outline-secondary mb-4 mt-2" >تعديل صورة الملف الشخصي</label>
+            <input type="file" name="image" id="image" accept="image/*" style="display: none;">
+        </div>
         <input class="btn btn-primary mb-4" type="submit" value=" تعديل   ">
     </form>
 </div>

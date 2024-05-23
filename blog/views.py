@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment
 from .forms import NowComment
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.views.generic import CreateView
 
 # Create your views here.
 
@@ -46,3 +47,7 @@ def post_detail(request, post_id):
   
     return render(request, 'blog/detail.html', context)
 
+class Post_Creat_view(CreateView):
+    model  = Post
+    fields = ['name', 'description']
+    template_name = 'blog/new_post.html'

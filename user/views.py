@@ -80,11 +80,12 @@ def profile_update(request):
             user_form.save()
             img_form.save()
             messages.success(request, 'تم تعديل ملفك الشخصي')
+            return redirect('profile')
     else:
-        update_user = UpdateProfile(instance=request.user)
-        update_img = Update_img_profile(instance=request.user)
+        user_form = UpdateProfile(instance=request.user)
+        img_form = Update_img_profile(instance=request.user)
         messages.success(request,'هناك خطأ')
-
+    
 
     context = {
         'title':'تعديل ملف شخصي',
