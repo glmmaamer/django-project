@@ -1,3 +1,5 @@
+from django.forms import BaseModelForm
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment
 from .forms import NowComment
@@ -51,3 +53,9 @@ class Post_Creat_view(CreateView):
     model  = Post
     fields = ['name', 'description']
     template_name = 'blog/new_post.html'
+    
+    def form_valid(self, form):
+        form.instance.user_post = self.request.user
+        return super().form_valid(form)
+        
+
