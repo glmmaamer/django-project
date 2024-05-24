@@ -4,8 +4,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment
 from .forms import NowComment, post_ar
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.views.generic import CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # Create your views here.
 
 def home(request):
@@ -57,5 +57,23 @@ class Post_Creat_view(LoginRequiredMixin ,CreateView):
     def form_valid(self, form):
         form.instance.user_post = self.request.user
         return super().form_valid(form)
+    
+
+class Post_update_view(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
+    model = Post
+    template_name = 'blog/new_post.html'
+    form_class = post_ar
+
+    def form_valid(self, form):
+        form.instance.user_post = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.user_post:
+            return True
+        else:
+            return False
+        
         
 
