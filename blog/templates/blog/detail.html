@@ -12,7 +12,7 @@
     {% if post.user_post == user %}
     <div class="form-group btn-editing">
         <a class="btn btn-secondary" href="{% url 'update' post.id %}">تحرير</a>
-        <button class="btn btn-danger" type="submit">حذف </button>
+        <a class="btn btn-danger" href="{% url 'delet' post.id %}">حذف</a>
     </div>
     {% endif %}
     <span class="text-blackt">تاريخ التدوينة : {{post.date_post | date:'d-m-Y'}}</span>

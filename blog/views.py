@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post,Comment
 from .forms import NowComment, post_ar
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # Create your views here.
 
@@ -61,7 +61,7 @@ class Post_Creat_view(LoginRequiredMixin ,CreateView):
 
 class Post_update_view(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Post
-    template_name = 'blog/new_post.html'
+    template_name = 'blog/post_update.html'
     form_class = post_ar
 
     def form_valid(self, form):
@@ -74,6 +74,15 @@ class Post_update_view(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
             return True
         else:
             return False
-        
+class Post_delet_views(UserPassesTestMixin ,LoginRequiredMixin, DeleteView):
+    model = Post
+    success_url = '/'
+    template_name = 'blog/confirm_delet_post.html'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.user_post:
+            return True
+        return False
         
 

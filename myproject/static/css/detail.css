@@ -8,6 +8,6 @@
     border:solid 2px grey;
     border-bottom: solid 3px black;
 }
-#btn-editing{
+.back-btn{
     float: left;
 }
